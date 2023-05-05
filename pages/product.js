@@ -1,9 +1,9 @@
 import CardBox from "@/components/card";
-import Ncard from "@/components/ncard";
-// import { Row, Col, Container } from "react-bootstrap";
-import { Card, Grid, Row, Text } from "@nextui-org/react";
+// import Ncard from "@/components/ncard";
+import { Row, Col, Container } from "react-bootstrap";
+// import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { useId } from "react";
-const Product = ({ cards }) => {
+const Product = ({ cards = [] }) => {
   const randomImage = () => {
     const defText = "images/product/" + getRandomInt(1, 6) + ".jepg";
     console.log(defText);
@@ -62,7 +62,7 @@ const Product = ({ cards }) => {
   ];
   return (
     <>
-      {/* <Container>
+      <Container>
         <Row>
           {cards &&
             cards.map((item, index) => {
@@ -73,12 +73,12 @@ const Product = ({ cards }) => {
               );
             })}
         </Row>
-      </Container> */}
-      <Grid.Container gap={2} justify="flex-start">
+      </Container>
+      {/* <Grid.Container gap={2} justify="flex-start">
         {cards.map((item, index) => (
           <>
             <Ncard item={item} index={index}></Ncard>
-            {/* <Grid xs={6} sm={3} key={index}>
+            <Grid xs={6} sm={3} key={index}>
               <Card isPressable>
                 <Card.Body css={{ p: 0 }}>
                   <Card.Image
@@ -104,10 +104,10 @@ const Product = ({ cards }) => {
                   </Row>
                 </Card.Footer>
               </Card>
-            </Grid> */}
+            </Grid> 
           </>
         ))}
-      </Grid.Container>
+      </Grid.Container> */}
     </>
   );
 };
@@ -124,7 +124,8 @@ export async function getServerSideProps() {
     console.log(randNum);
     return randNum;
   };
-  console.log(cards);
+  debugger;
+  console.log(data);
   data.forEach((element) => {
     element.price = "$" + getRandomInt(2, 50);
     element.img = `images/product/${getRandomInt(1, 6)}.jpeg`;
